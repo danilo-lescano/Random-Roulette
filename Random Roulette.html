@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random Roulette</title>
+	<style type="text/css">
+		@import url("https://fonts.googleapis.com/css?family=Rubik:700&display=swap");
+		* {
+			box-sizing: border-box;
+		}
+		*::before, *::after {
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Rubik', sans-serif;
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+
+		button {
+			position: relative;
+			display: inline-block;
+			cursor: pointer;
+			outline: none;
+			border: 0;
+			vertical-align: middle;
+			text-decoration: none;
+			font-size: inherit;
+			font-family: inherit;
+		}
+		button.learn-more {
+			margin-left: 50vw;
+			margin-top: calc(50vh + 160px);
+			font-weight: 600;
+			color: #382b22;
+			text-transform: uppercase;
+			padding: 1.25em 2em;
+			background: #fff0f0;
+			border: 2px solid #b18597;
+			border-radius: 0.75em;
+			transform: translateX(-50%);
+			transform-style: preserve-3d;
+			transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+		}
+		button.learn-more::before {
+			position: absolute;
+			content: '';
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: #f9c4d2;
+			border-radius: inherit;
+			box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+			transform: translate3d(0, 0.75em, -1em);
+			transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+		}
+		button.learn-more:hover {
+			background: #ffe9e9;
+			transform: translate(-50%, 0.25em);
+		}
+		button.learn-more:hover::before {
+			box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+			transform: translate3d(0, 0.5em, -1em);
+		}
+		button.learn-more:active {
+			background: #ffe9e9;
+			transform: translate(-50%, 0.75em);
+		}
+		button.learn-more:active::before {
+			box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+			transform: translate3d(0, 0, -1em);
+		}
+	</style>
+	<style type="text/css">
+		html, body {
+			background: linear-gradient(45deg, #ff8e8e, red, maroon);
+			margin: 0;
+			padding: 0;
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+		}
+		.caixa {
+			display: inline-block;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			margin-top: calc(50vh - 230px);
+			/* margin-left: calc(50vw - 350px); */
+			width: 600px;
+			height: 360px;
+			perspective: 600px;
+			overflow: hidden;
+			padding: 50px;
+			background: linear-gradient(#f3c6c6, #ec8b8b);
+		}
+		.img {
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			backface-visibility: hidden;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			background-position: center;
+			transform-origin: top left;
+			transform-style: preserve-3d;
+			background-color: antiquewhite;
+		}
+		.img-card {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			transform-style: preserve-3d;
+			/*transform-origin: 50% 50% calc(-307.7683537 * 2px);*/
+			/*transform-origin: 50% 50% -631.37515146px;*/
+		}
+		input:checked+label {
+			display: none;
+		}
+		input:not(:checked)+label+label {
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="caixa">
+		<div id="roleta" class="img-card">
+			<div class="img" style="background-image: url('0.jpeg');">
+			<div class="img" style="background-image: url('1.jpeg');">
+			<div class="img" style="background-image: url('2.jpeg');">
+			<div class="img" style="background-image: url('3.jpeg');">
+			<div class="img" style="background-image: url('4.jpeg');">
+			<div class="img" style="background-image: url('5.jpeg');">
+			<div class="img" style="background-image: url('6.jpeg');">
+			<div class="img" style="background-image: url('7.jpeg');">
+			<div class="img" style="background-image: url('8.jpeg');">
+			<div class="img" style="background-image: url('9.jpeg');">
+			<div class="img" style="background-image: url('10.jpeg');">
+			<div class="img" style="background-image: url('11.jpeg');">
+			<div class="img" style="background-image: url('12.jpeg');">
+			<div class="img" style="background-image: url('13.jpeg');">
+			<div class="img" style="background-image: url('14.jpeg');">
+			<div class="img" style="background-image: url('15.jpeg');">
+			<div class="img" style="background-image: url('16.jpeg');">
+			<div class="img" style="background-image: url('17.jpeg');">
+			<div class="img" style="background-image: url('18.jpeg');">
+			<div class="img" style="background-image: url('19.jpeg');">
+				
+			</div></div></div></div></div>
+			</div></div></div></div></div>
+			</div></div></div></div></div>
+			</div></div></div></div></div>
+		</div>
+	</div>
+	<button class="learn-more" onclick="randomTarget();">SPIN THE ROULETTE!</button>
+	<div style="position: absolute; left: 30px; bottom: 30px;">
+		<input type="checkbox" id="sound" name="sound" checked> <label for="sound">Sound OFF</label><label for="sound">Sound ON</label>
+	</div>
+	<audio style="display: none;" id="audio" >
+		<source src="audio.mpeg" type="audio/mpeg">
+	</audio>
+</body>
+</html>
+<script type="text/javascript">
+	var roleta = document.getElementById("roleta");
+	var imgs = document.getElementsByClassName('img');
+	var audio = document.getElementById('audio');
+	var audioFlag = document.getElementById('sound');
+	var NUM = 180 * (imgs.length - 2);
+	NUM /= imgs.length;
+	NUM = 180 - NUM;
+	roleta.style.transformOrigin = "50% 50% calc(" + roleta.offsetWidth/2 + "px / -" + Math.tan(NUM/2 * Math.PI/180) + ")";
+	for(var i = 1; i < imgs.length; i++) {
+		imgs[i].style.transform = "translateX(100%) rotateY(" + NUM + "deg)";
+	}
+	var auxiliar = imgs;
+	imgs = []; imgs[0] = auxiliar[0];
+	for(var i = auxiliar.length - 1; i > 0; i--) {
+		imgs[imgs.length] = auxiliar[i];
+	}
+
+	const initial = {
+		accMax: 1,//Max acceleration
+		accMin: 0,//Min acceleration
+		accDelta: 0.33,
+		maxBouncy: 3,
+		maxAlpha: 0.6,
+		velocity: 320+180+90
+	};
+	var angle = 0;
+	var angleTarget = 0;
+	var velocity = 0;
+	var bouncy = 0;
+	var acc = initial.accMax;
+	var time = Date.now();
+	var deltaTime = 0;
+	function loop() {
+		deltaTime = (Date.now() - time)/1000;
+		time = Date.now();
+
+		if(acc > 0)
+			rotation();
+		else if(angle%NUM > 0)
+			snap();
+
+		acc -= initial.accDelta * deltaTime;
+		acc = Math.max(acc, initial.accMin);
+		requestAnimationFrame(loop);
+	}
+	function rotation() {
+		angle += (velocity * deltaTime) * acc;
+		angle%=360;
+		roleta.style.transform = "rotateY(" + (-angle) + "deg)";
+		calcShadow();
+	}
+	function snap() {
+		angle += (NUM - angle%NUM) * deltaTime;
+		if(angle%NUM >= NUM - 0.01) angle += (NUM - angle%NUM);
+		roleta.style.transform = "rotateY(" + (-angle) + "deg)";
+		calcShadow();
+	}
+	function calcShadow() {
+		for(var i = 0; i < imgs.length; i++) {
+			var alpha = i*NUM + angle;
+			if(alpha < (360-NUM))
+				alpha = alpha/(360-NUM) * initial.maxAlpha;
+			else
+				alpha = (NUM-(alpha%(360-NUM)))/NUM * initial.maxAlpha;
+			imgs[i].style.backgroundImage = "linear-gradient(rgba(0, 0, 0, " + alpha + "), rgba(0, 0, 0, " + alpha + "))" + ", url(" + i + ".jpeg)";
+		}
+	}
+	function randomTarget() {
+		if(audioFlag.checked) {
+			audio.currentTime = 0.5;
+			audio.play();
+		}
+		var rand = Math.floor(Math.random() * 360) + 360*2;
+		if(rand%NUM > NUM/2) rand += (NUM - rand%NUM);
+		else if(rand%NUM > 0) rand += - rand%NUM;
+		angleTarget = rand;
+		acc = initial.accMax;
+		velocity = angleTarget;//initial.velocity;
+		bouncy = initial.maxBouncy;
+	}
+	requestAnimationFrame(loop);
+</script>
